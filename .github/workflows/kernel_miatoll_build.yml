@@ -35,7 +35,7 @@ jobs:
       - name: Patch kernelsu.config
         run: |
           echo 'CONFIG_KPROBES=y' >> kernel_xiaomi_sm6250/arch/arm64/configs/vendor/kernelsu.config && sed -i '/CONFIG_KSU_SUSFS/d' kernel_xiaomi_sm6250/arch/arm64/configs/vendor/kernelsu.config
-          sed -i 's/CONFIG_LOCALVERSION=".*"/CONFIG_LOCALVERSION="-Kurokage"/' kernel_xiaomi_sm6250/arch/arm64/configs/vendor/kernelsu.config
+          sed -i 's/CONFIG_LOCALVERSION=".*"/CONFIG_LOCALVERSION="-Kurayami"/' kernel_xiaomi_sm6250/arch/arm64/configs/vendor/kernelsu.config
 
       - name: 📅 Export date of build
         run: |
