@@ -1,5 +1,9 @@
 name: Build KernelSU-Next for MiAtoll
 
+permissions:
+  contents: write
+  actions: read
+
 on:
   push:
     branches:
