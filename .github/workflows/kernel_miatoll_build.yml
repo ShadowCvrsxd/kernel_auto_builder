@@ -26,15 +26,16 @@ jobs:
         run: |
           git clone --depth=1 https://github.com/Evolution-x-devices/kernel_xiaomi_sm6250/ kernel_xiaomi_sm6250 -b vic
 
-      - name: Pin KernelSU-Next to v3.4.2
+      - name: Pin KernelSU-Next to legacy
         run: |
           cd kernel_xiaomi_sm6250
           rm -rf KernelSU-Next
-          git clone --depth=1 --branch v3.4.2 https://github.com/KernelSU-Next/KernelSU-Next.git KernelSU-Next
+          git clone --depth=1 --branch legacy https://github.com/KernelSU-Next/KernelSU-Next.git KernelSU-Next
 
       - name: Patch kernelsu.config
         run: |
           echo 'CONFIG_KPROBES=y' >> kernel_xiaomi_sm6250/arch/arm64/configs/vendor/kernelsu.config && sed -i '/CONFIG_KSU_SUSFS/d' kernel_xiaomi_sm6250/arch/arm64/configs/vendor/kernelsu.config
+          sed -i 's/CONFIG_LOCALVERSION=".*"/CONFIG_LOCALVERSION="-Kurokage"/' kernel_xiaomi_sm6250/arch/arm64/configs/vendor/kernelsu.config
 
       - name: 📅 Export date of build
         run: |
